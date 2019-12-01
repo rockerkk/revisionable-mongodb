@@ -26,12 +26,12 @@ Revisionable has support for Auth powered by
 
 ## Installation
 
-Revisionable is installable via [composer](https://getcomposer.org/doc/00-intro.md), the details are on [packagist, here.](https://packagist.org/packages/venturecraft/revisionable)
+Revisionable is installable via [composer](https://getcomposer.org/doc/00-intro.md), the details are on [packagist, here.](https://packagist.org/packages/rockerkk/revisionable-mongodb)
 
 Add the following to the `require` section of your projects composer.json file:
 
 ```php
-"venturecraft/revisionable": "1.*",
+"rockerkk/revisionable-mongodb": "1.*",
 ```
 
 Run composer update to download the package
@@ -62,12 +62,12 @@ php artisan migrate
 
 For Laravel 4.x users:
 ```
-php artisan migrate --package=venturecraft/revisionable
+php artisan migrate --package=rockerkk/revisionable-mongodb
 ```
 
 > If you're going to be migrating up and down completely a lot (using `migrate:refresh`), one thing you can do instead is to copy the migration file from the package to your `app/database` folder, and change the classname from `CreateRevisionsTable` to something like `CreateRevisionTable` (without the 's', otherwise you'll get an error saying there's a duplicate class)
 
-> `cp vendor/venturecraft/revisionable/src/migrations/2013_04_09_062329_create_revisions_table.php database/migrations/`
+> `cp vendor/rockerkk/revisionable-mongodb/src/migrations/2013_04_09_062329_create_revisions_table.php database/migrations/`
 
 ## Docs
 
@@ -376,7 +376,7 @@ $object->disableRevisionField(['title', 'content']); // Disables title and conte
 ## Contributing
 
 Contributions are encouraged and welcome; to keep things organised, all bugs and requests should be
-opened in the GitHub issues tab for the main project, at [venturecraft/revisionable/issues](https://github.com/venturecraft/revisionable/issues)
+opened in the GitHub issues tab for the main project, at [rockerkk/revisionable-mongodb/issues](https://github.com/rockerkk/revisionable-mongodb/issues)
 
 All pull requests should be made to the develop branch, so they can be tested before being merged into the master branch.
 
@@ -386,6 +386,6 @@ All pull requests should be made to the develop branch, so they can be tested be
 If you're having troubles with using this package, odds on someone else has already had the same problem. Two places you can look for common answers to your problems are:
 
 * [StackOverflow revisionable tag](https://stackoverflow.com/questions/tagged/revisionable?sort=newest&pageSize=50)
-* [GitHub Issues](https://github.com/VentureCraft/revisionable/issues)
+* [GitHub Issues](https://github.com/rockerkk/revisionable-mongodb/issues)
 
 > If you do prefer posting your questions to the public on StackOverflow, please use the 'revisionable' tag.

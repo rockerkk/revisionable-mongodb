@@ -193,8 +193,8 @@ trait RevisionableTrait
                     'old_value' => Arr::get($this->originalData, $key),
                     'new_value' => $this->updatedData[$key],
                     'user_id' => $this->getSystemUserId(),
-                    'created_at' => new \DateTime(),
-                    'updated_at' => new \DateTime(),
+                    'created_at' => $this->freshTimestamp(),
+                    'updated_at' => $this->freshTimestamp(),
                 );
             }
 
@@ -233,10 +233,10 @@ trait RevisionableTrait
                 'revisionable_id' => $this->getKey(),
                 'key' => self::CREATED_AT,
                 'old_value' => null,
-                'new_value' => $this->{self::CREATED_AT},
+                'new_value' => $this->fromDateTime($this->{self::CREATED_AT}),
                 'user_id' => $this->getSystemUserId(),
-                'created_at' => new \DateTime(),
-                'updated_at' => new \DateTime(),
+                'created_at' => $this->freshTimestamp(),
+                'updated_at' => $this->freshTimestamp(),
             );
 
             $revision = Revisionable::newModel();
@@ -260,10 +260,10 @@ trait RevisionableTrait
                 'revisionable_id' => $this->getKey(),
                 'key' => $this->getDeletedAtColumn(),
                 'old_value' => null,
-                'new_value' => $this->{$this->getDeletedAtColumn()},
+                'new_value' => $this->fromDateTime($this->{$this->getDeletedAtColumn()}),
                 'user_id' => $this->getSystemUserId(),
-                'created_at' => new \DateTime(),
-                'updated_at' => new \DateTime(),
+                'created_at' => $this->freshTimestamp(),
+                'updated_at' => $this->freshTimestamp(),
             );
             $revision = Revisionable::newModel();
             \DB::table($revision->getTable())->insert($revisions);

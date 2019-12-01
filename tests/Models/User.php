@@ -2,7 +2,7 @@
 
 namespace Venturecraft\Revisionable\Tests\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Mongodb\Eloquent\Model;
 use Venturecraft\Revisionable\RevisionableTrait;
 
 /**

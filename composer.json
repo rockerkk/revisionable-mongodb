@@ -1,9 +1,9 @@
 {
-    "name": "venturecraft/revisionable",
+    "name": "rockerkk/revisionable-mongodb",
     "license": "MIT",
-    "description": "Keep a revision history for your models without thinking, created as a package for use with Laravel",
-    "keywords": ["model", "laravel", "ardent", "revision", "audit", "history"],
-    "homepage": "http://github.com/venturecraft/revisionable",
+    "description": "Keep a revision history for your models without thinking, created as a package for use with Laravel and mongoDB",
+    "keywords": ["model", "laravel", "mongodb", "ardent", "revision", "audit", "history"],
+    "homepage": "http://github.com/rockerkk/revisionable-mongodb",
     "authors": [
         {
             "name": "Chris Duell",
@@ -11,13 +11,14 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/VentureCraft/revisionable/issues",
-        "source": "https://github.com/VentureCraft/revisionable"
+        "issues": "https://github.com/rockerkk/revisionable-mongodb/issues",
+        "source": "https://github.com/rockerkk/revisionable-mongodb"
     },
     "require": {
         "php": ">=5.4.0",
         "illuminate/support": "~4.0|~5.0|~5.1|^6.0",
-        "laravel/framework": "~5.4|^6.0"
+        "laravel/framework": "~5.4|^6.0",
+        "jenssegers/mongodb": ">=3.0.0"
     },
     "autoload": {
         "classmap": [

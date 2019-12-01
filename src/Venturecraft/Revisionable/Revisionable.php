@@ -1,7 +1,7 @@
 <?php namespace Venturecraft\Revisionable;
 
 use Illuminate\Support\Arr;
-use Illuminate\Database\Eloquent\Model as Eloquent;
+use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
 /*
  * This file is part of the Revisionable package by Venture Craft
@@ -157,8 +157,8 @@ class Revisionable extends Eloquent
                     'old_value'             => Arr::get($this->originalData, $key),
                     'new_value'             => $this->updatedData[$key],
                     'user_id'               => $this->getSystemUserId(),
-                    'created_at'            => new \DateTime(),
-                    'updated_at'            => new \DateTime(),
+                    'created_at'            => $this->freshTimestamp(),
+                    'updated_at'            => $this->freshTimestamp(),
                 );
             }
 
@@ -190,10 +190,10 @@ class Revisionable extends Eloquent
                 'revisionable_id' => $this->getKey(),
                 'key' => self::CREATED_AT,
                 'old_value' => null,
-                'new_value' => $this->{self::CREATED_AT},
+                'new_value' => $this->fromDateTime($this->{self::CREATED_AT}),
                 'user_id' => $this->getSystemUserId(),
-                'created_at' => new \DateTime(),
-                'updated_at' => new \DateTime(),
+                'created_at' => $this->freshTimestamp(),
+                'updated_at' => $this->freshTimestamp(),
             );
 
             $revision = static::newModel();
@@ -214,10 +214,10 @@ class Revisionable extends Eloquent
                 'revisionable_id' => $this->getKey(),
                 'key' => $this->getDeletedAtColumn(),
                 'old_value' => null,
-                'new_value' => $this->{$this->getDeletedAtColumn()},
+                'new_value' => $this->fromDateTime($this->{$this->getDeletedAtColumn()}),
                 'user_id' => $this->getSystemUserId(),
-                'created_at' => new \DateTime(),
-                'updated_at' => new \DateTime(),
+                'created_at' => $this->freshTimestamp(),
+                'updated_at' => $this->freshTimestamp(),
             );
             $revision = static::newModel();
             \DB::table($revision->getTable())->insert($revisions);
