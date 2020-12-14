@@ -301,11 +301,11 @@ trait RevisionableTrait
                 'revisionable_type' => $this->getMorphClass(),
                 'revisionable_id' => $this->getKey(),
                 'key' => self::CREATED_AT,
-                'old_value' => $this->{self::CREATED_AT},
+                'old_value' => $this->fromDateTime($this->{self::CREATED_AT}),
                 'new_value' => null,
                 'user_id' => $this->getSystemUserId(),
-                'created_at' => new \DateTime(),
-                'updated_at' => new \DateTime(),
+                'created_at' => $this->freshTimestamp(),
+                'updated_at' => $this->freshTimestamp(),
             );
 
             $revision = Revisionable::newModel();
